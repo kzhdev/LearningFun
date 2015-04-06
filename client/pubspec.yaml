@@ -1,0 +1,12 @@
+name: LearningFun
+description: A sample Polymer application
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dependencies:
+  polymer: '>=0.16.0+1 <0.17.0'
+  paper_elements: '>=0.6.2+1 <0.7.0'
+  smartcanvas:
+    path: ../../smartcanvas
+transformers:
+- polymer:
+    entry_points: web/index.html
