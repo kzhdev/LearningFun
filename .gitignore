@@ -5,4 +5,4 @@
 build/
 packages
 pubspec.lock
-public
+public/
