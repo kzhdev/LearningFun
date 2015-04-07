@@ -10,16 +10,16 @@ var app = express();
 var server = http.createServer(app);
 
 // redirect http request to https
-app.use(function(req, res, next) {
-    if((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https') &&
-        req.get('Host').indexOf('localhost') === -1 &&
-        req.get('Host').indexOf('127.0.0.1') === -1) {
-        res.redirect('https://' + req.get('Host') + req.url);
-        console.log('redirected http request to https');
-    } else {
-        next();
-    }
-});
+//app.use(function(req, res, next) {
+//    if((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https') &&
+//        req.get('Host').indexOf('localhost') === -1 &&
+//        req.get('Host').indexOf('127.0.0.1') === -1) {
+//        res.redirect('https://' + req.get('Host') + req.url);
+//        console.log('redirected http request to https');
+//    } else {
+//        next();
+//    }
+//});
 
 require('./server_lib/routes/static').addRoutes(app, config);
 
