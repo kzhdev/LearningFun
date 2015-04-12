@@ -11,19 +11,6 @@ module.exports = {
     // The folder that contains the application files (note that the files are in a different repository) - relative to this file
     distFolder: path.resolve(__dirname, './public/web'),
 
-    // The folder that contains dart packages
-    packagesFolder: path.resolve(__dirname, './public/web/packages'),
-
-    // The base url from which we server dart packages
-    packagesUrl: '/packages',
-
-    // The base url from which we serve static files (such as js, css and images)
-    staticUrl: '/',
-
-    fontUrl: '/font',
-
-    fontFolder: path.resolve(__dirname, './public/font'),
-
     // The secret for encrypting the cookie
     cookieSecret: 'learning-app'
   }
