@@ -4,10 +4,19 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var config = require('./config.js');
+var config = require('./config');
+
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://learningfun:L67y14d17L411@ds061318.mongolab.com:61318/learning_fun', function(err) {
+  if (err) {
+    console.log('connection error', err);
+  } else {
+    console.log('connection successful');
+  }
+});
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var sentenceBuilders = require('./routes/sentence_builders');
 
 var app = express();
 
@@ -19,12 +28,21 @@ app.set('view engine', 'jade');
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(config.server.distFolder));
+app.use(express.static(path.join(__dirname, 'public/web/packages')));
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/sbs', sentenceBuilders);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
