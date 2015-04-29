@@ -135,9 +135,8 @@ class SentenceBuilder extends PolymerElement {
         }
       }
 
-      getQuestion(database, questions.first['_id'])
+      getQuestion(database, questions[currentQuest]['_id'])
         .then((quest) {
-          currentQuest = 0;
           question = quest['text'];
           sentenceReady = true;
         });

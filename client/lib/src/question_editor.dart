@@ -48,7 +48,7 @@ class QuestionEditor extends PolymerElement {
 
   @override
   void attached() {
-    getQuestionList('http://learning/${libPath}')
+    getQuestionList('http://learningfun.azurewebsites.net/${libPath}')
       .then((questionList) {
       questions.addAll(questionList);
     });
