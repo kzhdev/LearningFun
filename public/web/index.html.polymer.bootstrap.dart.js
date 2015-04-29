@@ -1208,7 +1208,7 @@ var dart = [
     }, null, null, 3, 0, 18, 728, "questions"],
     attached$0: [function(receiver) {
       var t1;
-      S.getQuestionList("http://learning/" + H.S(this.readValue$1(receiver, C.Symbol_libPath))).then$1(new Y.QuestionEditor_attached_closure(receiver));
+      S.getQuestionList("http://learningfun.azurewebsites.net/" + H.S(this.readValue$1(receiver, C.Symbol_libPath))).then$1(new Y.QuestionEditor_attached_closure(receiver));
       receiver.$$QuestionEditor__questSelector = J.$index$asx(this.get$$$(receiver), "question-selector");
       receiver.$$QuestionEditor__preViewContainer = J.$index$asx(this.get$$$(receiver), "preview-container");
       receiver.$$QuestionEditor__input = J.$index$asx(this.get$$$(receiver), "input");
@@ -1420,7 +1420,7 @@ var dart = [
           if (J.$eq(t1, J.get$length$asx(receiver.SentenceBuilder___$questions)))
             receiver.$$SentenceBuilder_currentQuest = 0;
         }
-        S.getQuestion(receiver.$$SentenceBuilder_database, J.$index$asx(J.get$first$ax(receiver.SentenceBuilder___$questions), "_id")).then$1(new F.SentenceBuilder_setSentence_closure(receiver));
+        S.getQuestion(receiver.$$SentenceBuilder_database, J.$index$asx(J.$index$asx(receiver.SentenceBuilder___$questions, receiver.$$SentenceBuilder_currentQuest), "_id")).then$1(new F.SentenceBuilder_setSentence_closure(receiver));
       }
     }, function($receiver) {
       return this.setSentence$1($receiver, null);
@@ -1714,7 +1714,6 @@ var dart = [
     call$1: [function(quest) {
       var t1, t2, t3;
       t1 = this.this_0;
-      t1.$$SentenceBuilder_currentQuest = 0;
       t2 = J.$index$asx(quest, "text");
       t3 = J.getInterceptor$x(t1);
       t1.SentenceBuilder___$question = t3.notifyPropertyChange$3(t1, C.Symbol_question, t1.SentenceBuilder___$question, t2);
@@ -1853,7 +1852,7 @@ var dart = [
           if (J.$eq(t1, J.get$length$asx(receiver.SentenceBuilder___$questions0)))
             receiver.$$SentenceBuilder_currentQuest0 = 0;
         }
-        S.getQuestion(receiver.$$SentenceBuilder_database0, J.$index$asx(J.get$first$ax(receiver.SentenceBuilder___$questions0), "_id")).then$1(new F.SentenceBuilder_setSentence_closure0(receiver));
+        S.getQuestion(receiver.$$SentenceBuilder_database0, J.$index$asx(J.$index$asx(receiver.SentenceBuilder___$questions0, receiver.$$SentenceBuilder_currentQuest0), "_id")).then$1(new F.SentenceBuilder_setSentence_closure0(receiver));
       }
     }, function($receiver) {
       return this.setSentence$1($receiver, null);
@@ -2147,7 +2146,6 @@ var dart = [
     call$1: [function(quest) {
       var t1, t2, t3;
       t1 = this.this_0;
-      t1.$$SentenceBuilder_currentQuest0 = 0;
       t2 = J.$index$asx(quest, "text");
       t3 = J.getInterceptor$x(t1);
       t1.SentenceBuilder___$question0 = t3.notifyPropertyChange$3(t1, C.Symbol_question, t1.SentenceBuilder___$question0, t2);
