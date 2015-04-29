@@ -1123,7 +1123,7 @@ var dart = [
     }, null, null, 1, 0, 2, "description"],
     attached$0: [function(receiver) {
       var t1;
-      S.getQuestionList("http://localhost:3000/" + H.S(this.readValue$1(receiver, C.Symbol_libPath))).then$1(new Y.QuestionEditor_attached_closure(receiver));
+      S.getQuestionList("http://learning/" + H.S(this.readValue$1(receiver, C.Symbol_libPath))).then$1(new Y.QuestionEditor_attached_closure(receiver));
       receiver.$$QuestionEditor__questSelector = J.$index$asx(this.get$$$(receiver), "question-selector");
       receiver.$$QuestionEditor__preViewContainer = J.$index$asx(this.get$$$(receiver), "preview-container");
       receiver.$$QuestionEditor__input = J.$index$asx(this.get$$$(receiver), "input");
@@ -1290,7 +1290,7 @@ var dart = [
         t4 = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, W.ShadowRoot);
         t5 = P.String;
         t5 = H.setRuntimeTypeInfo(new V.ObservableMap(P.HashMap_HashMap(null, null, null, t5, null), null, null), [t5, null]);
-        receiver.$$SentenceBuilder_database = "http://localhost:3000/sbs";
+        receiver.$$SentenceBuilder_database = "http://learningfun.azurewebsites.net/sbs";
         receiver.SentenceBuilder___$questions = t1;
         receiver.SentenceBuilder___$question = t2;
         receiver.SentenceBuilder___$sentenceReady = t3;

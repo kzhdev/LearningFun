@@ -1208,7 +1208,7 @@ var dart = [
     }, null, null, 3, 0, 18, 728, "questions"],
     attached$0: [function(receiver) {
       var t1;
-      S.getQuestionList("http://localhost:3000/" + H.S(this.readValue$1(receiver, C.Symbol_libPath))).then$1(new Y.QuestionEditor_attached_closure(receiver));
+      S.getQuestionList("http://learning/" + H.S(this.readValue$1(receiver, C.Symbol_libPath))).then$1(new Y.QuestionEditor_attached_closure(receiver));
       receiver.$$QuestionEditor__questSelector = J.$index$asx(this.get$$$(receiver), "question-selector");
       receiver.$$QuestionEditor__preViewContainer = J.$index$asx(this.get$$$(receiver), "preview-container");
       receiver.$$QuestionEditor__input = J.$index$asx(this.get$$$(receiver), "input");
@@ -1249,7 +1249,7 @@ var dart = [
         if (t1.containsKey$1("_id") === true)
           ;
         else
-          S.postQuestion("http://localhost:3000/" + H.S(this.readValue$1(receiver, C.Symbol_libPath)), receiver.$$QuestionEditor_editingQuestion).then$1(new Y.QuestionEditor_save_closure(receiver));
+          S.postQuestion("http://learningfun.azurewebsites.net/" + H.S(this.readValue$1(receiver, C.Symbol_libPath)), receiver.$$QuestionEditor_editingQuestion).then$1(new Y.QuestionEditor_save_closure(receiver));
     }, "call$1", "get$save", 2, 0, 13, 753, "save"],
     delete$1: [function(receiver, e) {
       var index, question;
@@ -1258,7 +1258,7 @@ var dart = [
         question = J.$index$asx(receiver.QuestionEditor___$questions, index);
         J.set$value$x(receiver.$$QuestionEditor__input, null);
         J.commit$0$x(receiver.$$QuestionEditor__input);
-        S.deleteQuestion("http://localhost:3000/" + H.S(this.readValue$1(receiver, C.Symbol_libPath)), J.$index$asx(question, "_id")).then$1(new Y.QuestionEditor_delete_closure(receiver));
+        S.deleteQuestion("http://learningfun.azurewebsites.net/" + H.S(this.readValue$1(receiver, C.Symbol_libPath)), J.$index$asx(question, "_id")).then$1(new Y.QuestionEditor_delete_closure(receiver));
       }
     }, "call$1", "get$$delete", 2, 0, 13, 753, "delete"],
     static: {QuestionEditor$created: [function(receiver) {
@@ -1296,7 +1296,7 @@ var dart = [
     "^": "Closure:12;this_0",
     call$1: [function(e) {
       var t1 = this.this_0;
-      S.getQuestionList("http://localhost:3000/" + H.S(J.readValue$1$x(t1, C.Symbol_libPath))).then$1(new Y.QuestionEditor_save__closure(t1));
+      S.getQuestionList("http://learningfun.azurewebsites.net/" + H.S(J.readValue$1$x(t1, C.Symbol_libPath))).then$1(new Y.QuestionEditor_save__closure(t1));
     }, null, null, 2, 0, 12, 753, "call"]
   },
   "+ QuestionEditor_save_closure": [729],
@@ -1314,7 +1314,7 @@ var dart = [
     "^": "Closure:12;this_0",
     call$1: [function(e) {
       var t1 = this.this_0;
-      S.getQuestionList("http://localhost:3000/" + H.S(J.readValue$1$x(t1, C.Symbol_libPath))).then$1(new Y.QuestionEditor_delete__closure(t1));
+      S.getQuestionList("http://learningfun.azurewebsites.net/" + H.S(J.readValue$1$x(t1, C.Symbol_libPath))).then$1(new Y.QuestionEditor_delete__closure(t1));
     }, null, null, 2, 0, 12, 753, "call"]
   },
   "+ QuestionEditor_delete_closure": [729],
@@ -1622,7 +1622,7 @@ var dart = [
         t4 = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, W.ShadowRoot);
         t5 = P.String;
         t5 = H.setRuntimeTypeInfo(new V.ObservableMap(P.HashMap_HashMap(null, null, null, t5, null), null, null), [t5, null]);
-        receiver.$$SentenceBuilder_database = "http://localhost:3000/sbs";
+        receiver.$$SentenceBuilder_database = "http://learningfun.azurewebsites.net/sbs";
         receiver.SentenceBuilder___$questions = t1;
         receiver.SentenceBuilder___$question = t2;
         receiver.SentenceBuilder___$sentenceReady = t3;
@@ -2055,7 +2055,7 @@ var dart = [
         t4 = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, W.ShadowRoot);
         t5 = P.String;
         t5 = H.setRuntimeTypeInfo(new V.ObservableMap(P.HashMap_HashMap(null, null, null, t5, null), null, null), [t5, null]);
-        receiver.$$SentenceBuilder_database0 = "http://localhost:3000/sbs";
+        receiver.$$SentenceBuilder_database0 = "http://learningfun.azurewebsites.net/sbs";
         receiver.SentenceBuilder___$questions0 = t1;
         receiver.SentenceBuilder___$question0 = t2;
         receiver.SentenceBuilder___$sentenceReady0 = t3;
