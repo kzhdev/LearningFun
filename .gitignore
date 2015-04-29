@@ -4,7 +4,6 @@
 .pub/
 build/
 pubspec.lock
-public/
 node_modules/
 data/
 npm-debug.log

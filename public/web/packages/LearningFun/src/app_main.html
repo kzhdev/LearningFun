@@ -1,0 +1,78 @@
+<polymer-element name="app-main">
+
+  <template>
+    <link rel="stylesheet" href="app_main.css">
+
+    <core-header-panel>
+
+      <core-toolbar>
+        <core-icon icon="home" on-click="{{goHome}}"></core-icon>
+        <core-label flex>{{currentPage.title}}</core-label>
+        <template if="{{route != '' && route != 'home' && route != 'editor'}}">
+          <core-icon id="question_editor" icon="create"
+                     on-click="{{edit}}">
+          </core-icon>
+        </template>
+      </core-toolbar>
+
+      <div id="body" horizontal layout center-center fit>
+        <!--
+        <template if="{{route == 'home'}}">
+          <home-page route="{{route}}"></home-page>
+
+          <div id="sentence-builder" class="circle" horizontal layout center-justified
+            self-center on-click="{{goto}}">
+            <core-label flex self-center>Sentence Builder</core-label>
+          </div>
+          <div id="place-missing-words" class="circle" horizontal layout
+            center-justified self-center on-click="{{goto}}">
+            <core-label flex self-center>Place Missing Words</core-label>
+          </div>
+          <div class="circle" horizontal layout center-justified self-center>
+            <core-label flex self-center>Word Builder</core-label>
+          </div>
+
+        </template>
+        <template if="{{route == 'sentence-builder'}}">
+          <sentence-builder fit></sentence-builder>
+        </template>
+        <template if="{{route == 'place-missing-words'}}">
+          <place-missing-words fit></place-missing-words>
+        </template>
+        -->
+      </div>
+
+      <!--
+      <template if="{{route == 'home'}}">
+        <div horizontal layout center-justified fit>
+          <div id="sentence-builder" class="circle" horizontal layout center-justified
+            self-center on-click="{{goto}}">
+            <core-label flex self-center>Sentence Builder</core-label>
+          </div>
+          <div id="place-missing-words" class="circle" horizontal layout
+            center-justified self-center on-click="{{goto}}">
+            <core-label flex self-center>Place Missing Words</core-label>
+          </div>
+          <div class="circle" horizontal layout center-justified self-center>
+            <core-label flex self-center>Word Builder</core-label>
+          </div>
+        </div>
+      </template>
+
+      <template if="{{route != 'home'}}">
+
+        <template if="{{route == 'sentence-builder'}}">
+          <sentence-builder fit></sentence-builder>
+        </template>
+        <template if="{{route == 'place-missing-words'}}">
+          <place-missing-words fit></place-missing-words>
+        </template>
+        <template if="{{route == 'word-builder'}}">
+          <word-builder fit></word-builder>
+        </template>
+      </template>
+       -->
+
+    </core-header-panel>
+  </template>
+</polymer-element>
