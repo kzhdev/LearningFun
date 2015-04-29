@@ -48,7 +48,7 @@ class QuestionEditor extends PolymerElement {
 
   @override
   void attached() {
-    getQuestionList('http://localhost:3000/${libPath}')
+    getQuestionList('http://learning/${libPath}')
       .then((questionList) {
       questions.addAll(questionList);
     });
@@ -101,9 +101,9 @@ class QuestionEditor extends PolymerElement {
       if (editingQuestion.containsKey('_id')) {
 
       } else {
-        postQuestion('http://localhost:3000/${libPath}', editingQuestion)
+        postQuestion('http://learningfun.azurewebsites.net/${libPath}', editingQuestion)
           .then((e) {
-          getQuestionList('http://localhost:3000/${libPath}')
+          getQuestionList('http://learningfun.azurewebsites.net/${libPath}')
             .then((questionList) {
             questions = toObservable(questionList);
           });
@@ -120,9 +120,9 @@ class QuestionEditor extends PolymerElement {
       _input.value = null;
       _input.commit();
 
-      deleteQuestion('http://localhost:3000/${libPath}', question['_id'])
+      deleteQuestion('http://learningfun.azurewebsites.net/${libPath}', question['_id'])
         .then((e) {
-        getQuestionList('http://localhost:3000/${libPath}')
+        getQuestionList('http://learningfun.azurewebsites.net/${libPath}')
           .then((questionList) {
           questions = toObservable(questionList);
         });

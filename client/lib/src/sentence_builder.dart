@@ -17,7 +17,7 @@ import 'package:LearningFun/src/utils/question_lib.dart';
 @CustomTag('sentence-builder')
 class SentenceBuilder extends PolymerElement {
 
-  final String database = "http://localhost:3000/sbs";
+  final String database = "http://learningfun.azurewebsites.net/sbs";
 
   Stage _stage;
 
