@@ -1,0 +1,9 @@
+<polymer-element name="sentence-input">
+  <template>
+    <paper-dialog id="popup" transition="core-transition-center" backdrop>
+      <paper-input-decorator floatingLabel label="Input a sentence:">
+        <input id="input" is="core-input" on-keypress="{{OnKeyPress}}">
+      </paper-input-decorator>
+    </paper-dialog>
+  </template>
+</polymer-element>

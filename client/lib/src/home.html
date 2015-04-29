@@ -1,0 +1,38 @@
+<polymer-element name="home-page" attribute="route">
+  <template>
+    <style>
+      :host {
+        display: 'block';
+        weight: 100%;
+        height: 100%;
+      }
+
+      #container {
+        width: 100%;
+        height: 100%;
+      }
+
+      .circle {
+        background-color: orange;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        color: white;
+        text-align: center;
+        margin: 10px;
+        cursor: pinter;
+      }
+    </style>
+
+    <div id="container" horizontal layout center-center>
+      <template repeat="{{page in pages}}">
+        <template if="{{page.name != 'home' && page.isQuestion}}">
+          <div class="circle" horizontal layout center-center
+               id="{{page.name}}" on-click="{{goto}}">
+            <core-label flex self-center>{{page.title}}</core-label>
+          </div>
+        </template>
+      </template>
+    </div>
+  </template>
+</polymer-element>

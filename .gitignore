@@ -3,7 +3,6 @@
 .idea
 .pub/
 build/
-packages
 pubspec.lock
 public/
-node_modules/
+ng_pages/
