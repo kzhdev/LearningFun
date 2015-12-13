@@ -4442,14 +4442,6 @@ of where they are in DOM.
     </style>
 
     <div id="canvas"></div>
-
-<!--
-    <template if="{{sentenceReady && sentence == null}}">
-      <paper-input-decorator id="sentence-input" floatingLabel label="Input a sentence:">
-        <input is="core-input" on-change="{{OnInputChange}}">
-      </paper-input-decorator>
-    </template>
--->
     <app-banner on-core-overlay-close-completed="{{OnBannerClosed}}"></app-banner>
 
   </template>
@@ -4514,7 +4506,7 @@ of where they are in DOM.
   <template>
     <style>
       :host {
-        display: 'block';
+        display: block;
         weight: 100%;
         height: 100%;
       }
@@ -4532,7 +4524,7 @@ of where they are in DOM.
         color: white;
         text-align: center;
         margin: 10px;
-        cursor: pinter;
+        cursor: pointer;
       }
     </style>
 
@@ -6534,19 +6526,8 @@ core-header-panel {
 }
 
 core-toolbar {
-  background: #303F9F;
+  background: #1976D2;
   color: white;
-}
-
-.circle {
-  background-color: orange;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  color: white;
-  text-align: center;
-  margin: 10px;
-  cursor: pinter;
 }
 
 #edit {
@@ -6565,62 +6546,7 @@ core-toolbar {
       </core-toolbar>
 
       <div id="body" horizontal="" layout="" center-center="" fit="">
-        <!--
-        <template if="{{route == 'home'}}">
-          <home-page route="{{route}}"></home-page>
-
-          <div id="sentence-builder" class="circle" horizontal layout center-justified
-            self-center on-click="{{goto}}">
-            <core-label flex self-center>Sentence Builder</core-label>
-          </div>
-          <div id="place-missing-words" class="circle" horizontal layout
-            center-justified self-center on-click="{{goto}}">
-            <core-label flex self-center>Place Missing Words</core-label>
-          </div>
-          <div class="circle" horizontal layout center-justified self-center>
-            <core-label flex self-center>Word Builder</core-label>
-          </div>
-
-        </template>
-        <template if="{{route == 'sentence-builder'}}">
-          <sentence-builder fit></sentence-builder>
-        </template>
-        <template if="{{route == 'place-missing-words'}}">
-          <place-missing-words fit></place-missing-words>
-        </template>
-        -->
       </div>
-
-      <!--
-      <template if="{{route == 'home'}}">
-        <div horizontal layout center-justified fit>
-          <div id="sentence-builder" class="circle" horizontal layout center-justified
-            self-center on-click="{{goto}}">
-            <core-label flex self-center>Sentence Builder</core-label>
-          </div>
-          <div id="place-missing-words" class="circle" horizontal layout
-            center-justified self-center on-click="{{goto}}">
-            <core-label flex self-center>Place Missing Words</core-label>
-          </div>
-          <div class="circle" horizontal layout center-justified self-center>
-            <core-label flex self-center>Word Builder</core-label>
-          </div>
-        </div>
-      </template>
-
-      <template if="{{route != 'home'}}">
-
-        <template if="{{route == 'sentence-builder'}}">
-          <sentence-builder fit></sentence-builder>
-        </template>
-        <template if="{{route == 'place-missing-words'}}">
-          <place-missing-words fit></place-missing-words>
-        </template>
-        <template if="{{route == 'word-builder'}}">
-          <word-builder fit></word-builder>
-        </template>
-      </template>
-       -->
 
     </core-header-panel>
   </template>

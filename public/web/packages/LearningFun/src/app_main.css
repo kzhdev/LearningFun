@@ -7,19 +7,8 @@ core-header-panel {
 }
 
 core-toolbar {
-  background: #303F9F;
+  background: #1976D2;
   color: white;
-}
-
-.circle {
-  background-color: orange;
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  color: white;
-  text-align: center;
-  margin: 10px;
-  cursor: pinter;
 }
 
 #edit {
