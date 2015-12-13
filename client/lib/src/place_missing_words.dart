@@ -41,7 +41,7 @@ class PlaceMissingWords extends PolymerElement {
 
   void initPage() {
     var container = this.shadowRoot.querySelector('#canvas');
-    _stage = new Stage(container, 'svg', {
+    _stage = new Stage(container, config: {
       WIDTH: container.clientWidth,
       HEIGHT: container.clientHeight - 10
     });
@@ -165,7 +165,7 @@ class PlaceMissingWords extends PolymerElement {
       char.visible = false;
     }
 
-    char.on(DRAGEND, (){
+    char.on(dragEnd, (){
       var anchor = _getOverlapAnchor(char);
       if (anchor != null) {
         if (char.anchor != null &&

@@ -25,7 +25,8 @@ class Page {
 final pages = [
   new Page('home', '', 'Learning Fun', 'home-page', isDefault: true, isQuestion: false),
   new Page('question_editor', 'editor', 'Question Editor', 'question-editor', isQuestion: false),
-  new Page('sentence_builder', 'sbs', '造句', 'sentence-builder', description: '请输入句子'),
+  new Page('sentence_builder', 'sbs', '造句', 'sentence-builder',
+      description: '请输入句子。括号中的词，在难度简单的练习中不会被拆开。'),
   new Page('place_missing_word', 'pmw', '填空', 'place-missing-word',
       description: '请输入句子。要填入的词用扣号扣起来。例如：见到好朋友我很（高兴）')
 ];

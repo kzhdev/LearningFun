@@ -1,0 +1,18 @@
+<polymer-element name="rating-element" attributes="maxRate">
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    
+    <div horizontal layout>
+      <template repeat="{{index in range}}">
+        <core-icon id="{{index}}" icon="start-outline" on-mouse-enter="{{updateRating}}">
+        </core-icon>
+      </template>
+    </div>    
+  </template>
+</polymer-element>

@@ -20,7 +20,7 @@ class Charactor extends CharFrame {
 
       this.draggable = true;
 
-      this.on(MOUSEENTER, (){
+      this.on(mouseEnter, (){
         String userAgent = dom.window.navigator.userAgent.toLowerCase();
         if (userAgent.contains('applewebkit')) {
           dom.document.body.style.cursor = '-webkit-grab';
@@ -31,11 +31,11 @@ class Charactor extends CharFrame {
         }
       });
 
-      this.on(MOUSEOUT, (){
+      this.on(mouseOut, (){
         dom.document.body.style.cursor = 'default';
       });
 
-      this.on(MOUSEDOWN, () {
+      this.on(mouseDown, () {
         this.moveToTop();
         String userAgent = dom.window.navigator.userAgent.toLowerCase();
         if (userAgent.contains('applewebkit')) {
@@ -47,7 +47,7 @@ class Charactor extends CharFrame {
         }
       });
 
-      this.on(MOUSEUP, () {
+      this.on(mouseUp, () {
         String userAgent = dom.window.navigator.userAgent.toLowerCase();
         if (userAgent.contains('applewebkit')) {
           dom.document.body.style.cursor = '-webkit-grab';
@@ -58,7 +58,7 @@ class Charactor extends CharFrame {
         }
       });
 
-      this.on(DRAGSTART, (){
+      this.on(dragStart, (){
         this.moveToTop();
       });
     }

@@ -6,3 +6,6 @@ build/
 pubspec.lock
 public/
 ng_pages/
+.packages
+.pub
+packages

@@ -33,9 +33,6 @@ class SentenceBuilder extends PolymerElement {
   @observable
   String question = toObservable(null);
 
-  @observable
-  bool sentenceReady = toObservable(false);
-
   List<Anchor> _anchors = [];
   List<Charactor> _charactors = [];
 
@@ -70,7 +67,7 @@ class SentenceBuilder extends PolymerElement {
 
   void initPage() {
     _container = $['canvas'];
-    _stage = new Stage(_container, 'svg', {
+    _stage = new Stage(_container, config: {
       WIDTH: _container.clientWidth,
       HEIGHT: _container.clientHeight - 10
     });
@@ -90,16 +87,13 @@ class SentenceBuilder extends PolymerElement {
 
   @ObserveProperty('questions')
   void onQuestionsChanged (){
-    if (sentenceReady == false) {
-      if (questions.isNotEmpty) {
-        if (isPreview != true) {
-          getQuestion(database, questions.first['_id'])
-            .then((quest) {
-              currentQuest = 0;
-              question = toObservable(quest['text']);
-              sentenceReady = true;
-            });
-        }
+    if (questions.isNotEmpty) {
+      if (isPreview != true) {
+        getQuestion(database, questions.first['_id'])
+          .then((quest) {
+            currentQuest = 0;
+            question = toObservable(quest['text']);
+          });
       }
     }
   }
@@ -138,7 +132,6 @@ class SentenceBuilder extends PolymerElement {
       getQuestion(database, questions[currentQuest]['_id'])
         .then((quest) {
           question = quest['text'];
-          sentenceReady = true;
         });
     }
   }
@@ -155,15 +148,36 @@ class SentenceBuilder extends PolymerElement {
   }
 
   void _createCharactors() {
+    var charPoss = [];
+
+    bool isOverlap(num x, num y) {
+      for (var pos in charPoss) {
+        if (x >= pos.x - 10 && x <= pos.x + 60 &&
+            y >= pos.y - 10 && y <= pos.y + 60) {
+          return true;
+        }
+      }
+      return false;
+    }
+
     for (var i = 0; i < question.length; i++) {
       if (question[i] == ' ') {
         continue;
       }
       var char = new Charactor(question[i]);
-      char..x = _rand.nextInt(_stage.width - 50)
-          ..y = _rand.nextInt(_stage.height - 100);
+      var x, y;
 
-      char.on(DRAGEND, (){
+      do {
+        x = _rand.nextInt(_stage.width - 50);
+        y = _rand.nextInt(_stage.height - 100);
+      } while(isOverlap(x, y));
+
+      char..x = x
+          ..y = y;
+
+      charPoss.add(new Position(x: x, y: y));
+
+      char.on(dragEnd, (){
         var anchor = _getOverlapAnchor(char);
         if (anchor != null) {
           if (char.anchor != null &&
