@@ -9,7 +9,7 @@ module.exports = {
     securePort: 8433,
 
     // The folder that contains the application files (note that the files are in a different repository) - relative to this file
-    distFolder: path.resolve(__dirname, './public/web'),
+    distFolder: path.resolve(__dirname, './public'),
 
     // The secret for encrypting the cookie
     cookieSecret: 'learning-app'

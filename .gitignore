@@ -7,3 +7,4 @@ pubspec.lock
 node_modules/
 data/
 npm-debug.log
+package-lock.json
