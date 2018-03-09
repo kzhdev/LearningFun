@@ -39,7 +39,7 @@ const styles = theme => ({
 class Toolbar extends React.Component {
   state = {
     id: uuid(),
-    sentence: null,
+    sentence: '',
     audio: null,
   };
 
@@ -53,7 +53,7 @@ class Toolbar extends React.Component {
     if (props.question !== this.props.question) {
       this.setState({
         id: props.question ? props.question.id : uuid(),
-        sentence: props.question ? props.question.sentence : null,
+        sentence: props.question ? props.question.sentence : '',
         audio: props.question ? props.question.audio : null,
       });
     }
