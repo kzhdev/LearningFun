@@ -7,6 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import SaveIcon from 'material-ui-icons/Save';
 import AudioRecorder from 'react-audio-recorder';
 import CloseIcon from 'material-ui-icons/Close';
+import uuid from './uuid';
 
 const styles = theme => ({
   root: {
@@ -37,25 +38,39 @@ const styles = theme => ({
 
 class Toolbar extends React.Component {
   state = {
-    sentence: "",
-    audioData: this.props.initialAudio
+    id: uuid(),
+    sentence: null,
+    audio: null,
   };
 
   componentDidMount = () => {
     window.bus.fire("resize");
+    // var question = this.props.getQuestion();
+    // this.setState({question: question});
   };
 
+  componentWillReceiveProps = (props) => {
+    if (props.question !== this.props.question) {
+      this.setState({
+        id: props.question ? props.question.id : uuid(),
+        sentence: props.question ? props.question.sentence : null,
+        audio: props.question ? props.question.audio : null,
+      });
+    }
+  };
+
+
   handleSentenceChange = event => {
-    this.setState({sentence: event.target.value});
+    this.setState({ sentence: event.target.value} );
     window.bus.fire("setSentence", event.target.value);
   };
 
   handleRecordComplet = (event) => {
-    this.setState({audioData: event.audioData});
+    this.setState({audio: event.audioData});
   };
 
   render() {
-    const { classes, audiodata } = this.props;
+    const { classes } = this.props;
 
     return (
       <div className={classes.root}>
@@ -71,10 +86,14 @@ class Toolbar extends React.Component {
             recordLabel="● 录音"
             removeLabel="✖ 删除"
             onChange={this.handleRecordComplet}
-            initialAudio={audiodata}
+            initialAudio={this.state.audio}
           />
           <IconButton className={classes.button} aria-label="save"
-                      onClick={ () => {this.props.onSave(this.state.sentence, this.state.audioData)}}
+                      onClick={ () => {this.props.onSave({
+                        id: this.state.id,
+                        sentence: this.state.sentence,
+                        audio: this.state.audio
+                      })}}
           >
             <SaveIcon/>
           </IconButton>
@@ -89,9 +108,10 @@ class Toolbar extends React.Component {
 
 Toolbar.propTypes = {
   classes: PropTypes.object.isRequired,
-  audiodata: PropTypes.object,
+  question: PropTypes.object,
   onClose: PropTypes.func.isRequired,
   onSave: PropTypes.func.isRequired,
+  getQuestion: PropTypes.func,
 };
 
 export default withStyles(styles, {withTheme: true})(Toolbar);

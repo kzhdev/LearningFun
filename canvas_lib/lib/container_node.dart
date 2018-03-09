@@ -60,7 +60,7 @@ abstract class ContainerNode extends Node with Container<Node> {
           (_reflection as Container).addChild(child._reflection);
         }
       } else if (nextReflectableChild._reflection != null) {
-        var grpReflection = _reflection;
+        GroupImpl grpReflection = _reflection;
         var index = grpReflection.children.indexOf(nextReflectableChild._reflection);
         if (index != -1) {
           grpReflection.insertChild(index, child._reflection);
@@ -139,7 +139,7 @@ abstract class ContainerNode extends Node with Container<Node> {
 
   @override
   BBox getBBox(bool isAbsolute) {
-    Map box = {
+    var box = <String, num>{
       'left': double.MAX_FINITE,
       'right': -double.MAX_FINITE,
       'top': double.MAX_FINITE,

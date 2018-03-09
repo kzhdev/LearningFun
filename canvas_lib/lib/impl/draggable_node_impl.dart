@@ -16,7 +16,7 @@ class DraggableNodeImpl {
 
   Position _preDragPointerPosition;
 
-  final bool _isMobile = isMobile();
+  final bool _isMobile = false; //isMobile();
 
   void initDraggable(Node node, svg.SvgElement el) {
     this._node = node;

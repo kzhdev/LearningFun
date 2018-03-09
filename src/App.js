@@ -13,7 +13,6 @@ import CloseIcon from 'material-ui-icons/Close';
 import Divider from 'material-ui/Divider';
 import NavMenu from './navMenu';
 import Workspace from './workspace';
-import uuid from 'uuid';
 
 const drawerWidth = 240;
 let visited_questions = [];
@@ -193,32 +192,58 @@ class App extends Component {
       let index = Math.floor(Math.random() * questions.length);
       this.setState({question: questions[index]});
       visited_questions.push(questions[index]);
-      window.bus.fire('setSentence', questions[index].sentence);
       questions.splice(index, 1);
     }
   };
 
-  saveQuestion = (sentence, audio) => {
+  saveQuestion = (question) => {
     let transaction = db.transaction("SentenceBuilder", "readwrite");
     let objectStore = transaction.objectStore("SentenceBuilder");
 
-    let newQuestion = {
-      id: uuid(),
-      sentence: sentence,
-      audio: audio
-    };
-
-    let request = objectStore.put(newQuestion);
+    let request = objectStore.put(question);
     request.onerror = () => {
       console.log("Error save sentence");
     };
 
     request.onsuccess = () => {
       console.log("Save sentence succeeded");
-      questions.push(newQuestion);
 
       let temp = this.state.questions;
-      temp.push(newQuestion);
+      let index = -1;
+      for (let i = 0, len = this.state.questions.length; i < len; i++) {
+        if (temp[i].id === question.id) {
+          index = i;
+          break;
+        }
+      }
+
+      if (index !== -1) {
+        temp[index] = question;
+
+        index = -1;
+        for (let i = 0, len = questions.length; i < len; i++) {
+          if (questions[i].id === question.id) {
+            index = i;
+            break;
+          }
+        }
+
+        if (index !== -1) {
+          questions[index] = question;
+        } else {
+          for (let i = 0, len = visited_questions.length; i < len; i++) {
+            if (visited_questions[i].id === question.id) {
+              visited_questions[i] = question;
+              break;
+            }
+          }
+        }
+        questions.push(question);
+
+      } else {
+        temp.push(question);
+        questions.push(question);
+      }
 
       this.setState({questions: temp});
     };
@@ -263,6 +288,15 @@ class App extends Component {
 
       this.setState({questions: temp});
     };
+  };
+
+  editSentence = (id) => {
+    for (let key in this.state.questions) {
+      if (this.state.questions[key].id === id) {
+        this.setState({question: this.state.questions[key], open: false, show_toolbar: true});
+        break;
+      }
+    }
   };
 
   render() {
@@ -310,6 +344,7 @@ class App extends Component {
               <NavMenu onAdd={this.addSentence}
                        questions={this.state.questions}
                        onDelete={this.deleteSentence}
+                       onEdit={this.editSentence}
               />
             </div>
           </Drawer>
@@ -319,6 +354,7 @@ class App extends Component {
             })}
           >
             <Workspace
+              question={this.state.question}
               showtoolbar={this.state.show_toolbar}
               audiodata={this.state.audioData}
               closeToolbar={()=>{this.setState({show_toolbar: false})}}

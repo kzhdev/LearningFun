@@ -25,7 +25,7 @@ class NavMenu extends React.Component {
       return (
         <ListItem key={item.id} className={classes.row}>
           <ListItemText className={classes.text} primary={item.sentence} />
-          <IconButton>
+          <IconButton data-id={item.id} onClick={(e) => { this.props.onEdit(e.currentTarget.dataset.id)} }>
             <OpenIcon/>
           </IconButton>
           <IconButton data-id={item.id} onClick={(e) => { this.props.onDelete(e.currentTarget.dataset.id)} }>
@@ -53,6 +53,7 @@ NavMenu.propTypes = {
   onAdd: PropTypes.func,
   questions: PropTypes.array.isRequired,
   onDelete: PropTypes.func,
+  onEdit: PropTypes.func,
 };
 
 export default withStyles(styles)(NavMenu);

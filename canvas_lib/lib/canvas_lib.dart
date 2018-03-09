@@ -6,7 +6,6 @@ import 'dart:math';
 import 'dart:svg' as svg;
 import 'dart:async';
 
-import 'package:r2d2/r2d2_client.dart';
 import 'package:dart_ext/collection_ext.dart';
 
 import 'event_bus.dart';

@@ -1,12 +1,12 @@
 part of canvas;
 
-ClientDetectDevice _cd = new ClientDetectDevice();
-
-bool isMobile() => _cd.isMobile();
-
-bool isTablet() => _cd.isTablet();
-
-bool isDesktop() => _cd.isDesktop();
+//ClientDetectDevice _cd = new ClientDetectDevice();
+//
+//bool isMobile() => _cd.isMobile();
+//
+//bool isTablet() => _cd.isTablet();
+//
+//bool isDesktop() => _cd.isDesktop();
 
 bool isDomEvent(String event) {
   switch (event) {

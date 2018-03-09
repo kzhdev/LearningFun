@@ -56,7 +56,7 @@ class Polygon extends PolyShape {
               }
             }
           } else {
-            _points.addAll(ps);
+            _points.addAll(ps as List<Position>);
           }
         }
       }
