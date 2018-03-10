@@ -176,7 +176,7 @@ class App extends Component {
   };
 
   addSentence = () => {
-    this.setState({open: false, show_toolbar: true});
+    this.setState({open: false, show_toolbar: true, question: null});
     window.bus.fire('clear-workspace');
   };
 
@@ -357,7 +357,7 @@ class App extends Component {
               question={this.state.question}
               showtoolbar={this.state.show_toolbar}
               audiodata={this.state.audioData}
-              closeToolbar={()=>{this.setState({show_toolbar: false})}}
+              closeToolbar={()=>{this.setState({show_toolbar: false}); this.next()}}
               saveQuestion={this.saveQuestion}
               next={this.next}
             />

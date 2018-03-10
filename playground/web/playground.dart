@@ -7,6 +7,7 @@ void main() {
 
   var sentenceBuilder = new SentenceBuilder("playground");
 //  sentenceBuilder.setSentence("我爱学中文");
+//  sentenceBuilder.setSentence("明天是星期六");
 
   bus.on('resize', () => sentenceBuilder.resize());
   bus.on('clear-workspace', () => sentenceBuilder.setSentence(null));

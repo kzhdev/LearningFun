@@ -5,8 +5,27 @@ import classNames from 'classnames';
 import Banner from './banner';
 import Toolbar from "./toolbar";
 import WAVEInterface from "react-audio-recorder/dist/waveInterface";
+import VolumUpIcon from 'material-ui-icons/VolumeUp';
+import Button from 'material-ui/Button';
 
-const styles = ({
+const intBus = (app) => {
+  if (window.bus) {
+    window.bus.on('wksMsg', (type, value) => {
+      if (type === 'showBanner') {
+        app.setState({
+          isCorrect: value,
+          show_banner: true,
+        });
+      }
+    });
+  } else {
+    setTimeout(()=> {
+      intBus(app);
+    }, 1);
+  }
+};
+
+const styles = theme => ({
   root: {
     width: '100%',
     height: '100%',
@@ -24,6 +43,12 @@ const styles = ({
   },
   playgroundMoveDown: {
     height: 'calc(100% - 64px - 68px)'
+  },
+  fab: {
+    position: 'absolute',
+    right: theme.spacing.unit * 2,
+    top: '70px',
+    zIndex: 2,
   }
 });
 
@@ -36,16 +61,7 @@ class Workspace extends React.Component {
   };
 
   componentDidMount = () => {
-    setTimeout(()=>{
-      window.bus.on('wksMsg', (type, value) => {
-        if (type === 'showBanner') {
-          this.setState({
-            isCorrect: value,
-            show_banner: true,
-          });
-        }
-      });
-    }, 10);
+    intBus(this);
   };
 
   componentWillReceiveProps = (props) => {
@@ -100,6 +116,13 @@ class Workspace extends React.Component {
             onSave={this.props.saveQuestion}
             getQuestion={() => {return this.state.question}}
           />
+        }
+        {!showtoolbar && this.state.question && this.state.question.audio &&
+          <Button variant="fab" className={classes.fab}
+                  onClick={() => {this.playAudio(this.state.question.audio)}}
+          >
+            <VolumUpIcon/>
+          </Button>
         }
         <div id="playground"
              className={classNames(classes.playground, {[classes.playgroundMoveDown]: showtoolbar})}/>
